@@ -8,12 +8,29 @@ header {
     background-color: #7d603b;
     padding: 1rem;
 }
-nav ul {
-    list-style-type: none;
+.platos {
+    color: white;
+    font-size: 20px;
+}
+
+.bloque {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+
+}
+nav ol {
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+nav {
+        font-size: 4rem;
+        text-align: center;
 }
 nav li {
     margin: 0.1rem;
@@ -21,6 +38,7 @@ nav li {
 nav a {
     color: #ffffff;
     text-decoration: none;  
+
 }
 h1 {
     color: #a19364;
@@ -28,12 +46,23 @@ h1 {
     text-align: center;
     margin-top: 2rem;
     font-size: 3rem;
+}
 
+main {
+    padding: 2rem;
+    text-align: center;
+}
+h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
 }
 p {
     color: #ffffff;
     text-align: center;
     margin: 2rem;
+    
+    font-size: 1.50rem;
 }
 img.food-image {
     display: block;
@@ -41,19 +70,5 @@ img.food-image {
     max-width: 100%;
     height: auto;
 }
-
-h2 {
-    color: hsl(0, 8%, 97%);
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 2rem;
-}
-main {
-    padding: 2rem;
-text-align: center;
-font-size: 5rem;
-
-}
-
 
 

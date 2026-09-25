@@ -1,2 +1,6 @@
 **/GitHub-Copilot-windows-x64-setup.exe
 .vscode/
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
