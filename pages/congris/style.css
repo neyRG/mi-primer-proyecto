@@ -10,7 +10,8 @@ header {
     background: #ead8bc;
     border-bottom: 5px solid #e68a22;
 }
-main {
+.instructions,
+.ingredients {
     padding: 3rem 0 4rem;
     width: min(100% - 2rem, 1040px);
     margin: 0 auto;
