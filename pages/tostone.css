@@ -7,7 +7,8 @@ body {
 }
 
 .container,
-.content-grid {
+.content-grid,
+.back-nav {
     width: min(100% - 2rem, 1040px);
     margin: 0 auto;
 }
@@ -26,6 +27,7 @@ header {
     letter-spacing: .16em;
     text-transform: uppercase;
 }
+
 h1,
 h2 {
     color: #4a291b;
@@ -95,6 +97,25 @@ h2 {
 
 .ingredients li::marker {
     color: #bb6b36;
+}
+
+.back-nav {
+    padding-bottom: 1rem;
+}
+
+.back-nav a {
+    color: #713d24;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    background: #ead8bc;
+    border-top: 5px solid #bb6b36;
+}
+
+footer p {
+    margin: .25rem 0;
 }
 
 @media (max-width: 700px) {

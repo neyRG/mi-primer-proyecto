@@ -1,0 +1,171 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #2f241b;
+    background: #f7f0e5;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+}
+
+header {
+    padding: 3rem 1rem;
+    text-align: center;
+    background: #ead8bc;
+    border-bottom: 5px solid #bb6b36;
+}
+
+.container,
+.recetas {
+    width: min(100%, 1040px);
+    margin: 0 auto;
+}
+
+h1,
+h2 {
+    color: #4a291b;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.1;
+}
+
+h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro p {
+    max-width: 420px;
+    margin: 0;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+img.food-image {
+    display: block;
+    width: min(48%, 450px);
+    max-height: 320px;
+    object-fit: cover;
+    border: 8px solid #fffaf2;
+    box-shadow: 0 12px 25px rgba(74, 41, 27, .18);
+}
+
+.recetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    padding: 3rem 1rem;
+}
+
+.bloque {
+    min-width: 0;
+}
+
+.platos {
+    margin: 0;
+    padding-left: 1.4rem;
+    font-size: 1rem;
+}
+
+.platos li {
+    margin-bottom: .8rem;
+}
+
+.recetas>h2,
+.recetas>nav {
+    grid-column: 1 / -1;
+}
+
+.recetas>h2 {
+    margin: 1rem 0 -1rem;
+    text-align: center;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: .75rem 0;
+    color: #713d24;
+    font-size: 1.15rem;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .2em;
+    border-bottom: 1px solid #c9ad8b;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: #8b4826;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    background: #ead8bc;
+    border-top: 5px solid #bb6b36;
+}
+
+footer p {
+    margin: .25rem 0;
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    .intro,
+    .recetas {
+        grid-template-columns: 1fr;
+    }
+
+    .intro {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .intro p {
+        text-align: center;
+    }
+
+    img.food-image {
+        width: min(100%, 450px);
+    }
+
+    .recetas {
+        padding: 2rem 1rem;
+    }
+
+    .recetas>h2,
+    .recetas>nav {
+        grid-column: auto;
+    }
+
+    nav ul {
+        grid-template-columns: 1fr;
+    }
+}

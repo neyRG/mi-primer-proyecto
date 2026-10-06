@@ -19,7 +19,7 @@ Cómo empezar
 
 1. Clonar o descargar el repositorio.
 2. Abrir la carpeta del proyecto en Visual Studio Code.
-3. Abrir el archivo index/index.html en un navegador web.
+3. Abrir el archivo index.html en un navegador web.
 4. Explorar las diferentes secciones de la página.
 
 Estado del proyecto

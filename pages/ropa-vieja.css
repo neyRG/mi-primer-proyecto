@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    color: #2f241b;
+    background: #f7f0e5;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+}
+
+header {
+    padding: 3rem 0 2rem;
+    text-align: center;
+    background: #ead8bc;
+    border-bottom: 5px solid #bb6b36;
+}
+
+.container,
+.content-grid,
+.back-nav {
+    width: min(100% - 2rem, 1040px);
+    margin: 0 auto;
+}
+
+.eyebrow {
+    margin: 0 0 .25rem;
+    color: #8b4826;
+    font: 700 .8rem/1.2 Arial, sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+    color: #4a291b;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    line-height: 1;
+}
+
+h2 {
+    margin: 0 0 1.25rem;
+    font-size: 1.4rem;
+}
+
+.food-image {
+    display: block;
+    width: min(100% - 1rem, 600px);
+    max-height: 360px;
+    margin: 0 auto;
+    object-fit: cover;
+    border: 8px solid #fffaf2;
+    box-shadow: 0 12px 25px rgba(74, 41, 27, .18);
+}
+
+.intro {
+    max-width: 700px;
+    margin: 1.5rem auto 0;
+    font-size: 1.1rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(220px, .8fr);
+    gap: 2rem;
+    padding: 3rem 0 2rem;
+}
+
+.recipe-section {
+    padding: 1.5rem;
+    background: #fffaf2;
+    border-top: 4px solid #bb6b36;
+    box-shadow: 0 8px 20px rgba(74, 41, 27, .08);
+}
+
+.instructions ol,
+.ingredients ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.instructions li,
+.ingredients li {
+    margin-bottom: 1rem;
+}
+
+.instructions li::marker,
+.ingredients li::marker {
+    color: #bb6b36;
+}
+
+.back-nav {
+    grid-column: 1 / -1;
+    padding-bottom: 1rem;
+}
+
+.back-nav a {
+    color: #713d24;
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    background: #ead8bc;
+    border-top: 5px solid #bb6b36;
+}
+
+footer p {
+    margin: .25rem 0;
+}
+
+@media (max-width: 680px) {
+    header {
+        padding-top: 2rem;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        padding-top: 2rem;
+    }
+
+    .recipe-section {
+        padding: 1.25rem;
+    }
+}
