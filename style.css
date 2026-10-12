@@ -27,9 +27,9 @@ header {
 }
 
 .site-nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
     width: min(100%, 1040px);
     margin: 0 auto 2rem;
@@ -44,11 +44,17 @@ header {
     text-decoration: none;
 }
 
-.site-nav ul,
-.recetas nav ul {
-    display: flex;
-    flex-wrap: wrap;
+.site-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
     align-items: center;
+    gap: .5rem 1.5rem;
+    list-style: none;
+}
+
+.recetas nav ul {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: .5rem 1.5rem;
     list-style: none;
 }
@@ -84,11 +90,11 @@ h2 {
     text-transform: uppercase;
 }
 
-.intro {
-    display: flex;
+.container>div.intro {
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     max-width: 900px;
     margin: 0 auto;
     font-size: 1.1rem;
@@ -97,17 +103,22 @@ h2 {
 .intro p {
     max-width: 420px;
     margin: 0;
-    text-align: left;
+    text-align: center;
     font-size: 1.1rem;
 }
 
 img.food-image {
     display: block;
-    width: min(48%, 450px);
+    width: min(100%, 450px);
     max-height: 320px;
     object-fit: cover;
     border: 8px solid #fffaf2;
     box-shadow: 0 12px 25px rgba(74, 41, 27, .18);
+}
+
+.intro img.food-image {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .container>img.food-image {
@@ -122,19 +133,39 @@ img.food-image {
 }
 
 .recetas {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "platos"
+        "caracteristicas"
+        "titulo-recetas"
+        "lista-recetas";
     align-items: stretch;
-    gap: 2rem;
-    padding: 3rem 1rem;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
 }
 
 .bloque {
-    flex: 1 1 300px;
     min-width: 0;
     padding: 1.5rem;
     background: #fffaf2;
     border-top: 4px solid #bb6b36;
+}
+
+#platos {
+    grid-area: platos;
+}
+
+.recetas>.bloque:nth-of-type(2) {
+    grid-area: caracteristicas;
+}
+
+.recetas>#recetas {
+    grid-area: titulo-recetas;
+}
+
+.recetas>nav {
+    grid-area: lista-recetas;
 }
 
 .platos {
@@ -148,7 +179,7 @@ img.food-image {
 
 .recetas>h2,
 .recetas>nav {
-    flex: 1 0 100%;
+    grid-column: 1 / -1;
 }
 
 .recetas>h2 {
@@ -157,24 +188,30 @@ img.food-image {
 }
 
 .content-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "ingredients"
+        "instructions";
     align-items: stretch;
-    gap: 2rem;
-    padding: 3rem 0 2rem;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.instructions {
+    grid-area: instructions;
+}
+
+.ingredients {
+    grid-area: ingredients;
 }
 
 .recipe-section {
-    flex: 2 1 420px;
     min-width: 0;
     padding: 1.5rem;
     background: #fffaf2;
     border-top: 4px solid #bb6b36;
     box-shadow: 0 8px 20px rgba(74, 41, 27, .08);
-}
-
-.ingredients {
-    flex: 1 1 240px;
 }
 
 .instructions ol,
@@ -200,7 +237,7 @@ img.food-image {
 }
 
 .content-grid>.back-nav {
-    flex: 1 0 100%;
+    grid-column: 1 / -1;
 }
 
 .back-nav a {
@@ -227,48 +264,48 @@ footer p {
     margin: .25rem 0;
 }
 
-@media (max-width: 650px) {
-    header {
-        padding: 0 1rem 2rem;
-    }
-
+@media (min-width: 1024px) {
     .site-nav {
-        align-items: flex-start;
-        flex-direction: column;
-        margin-bottom: 1.5rem;
+        grid-template-columns: minmax(0, 1fr) auto;
     }
 
     .site-nav ul {
-        gap: .25rem 1rem;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
     }
 
-    .intro,
-    .content-grid {
-        flex-direction: column;
-    }
-
-    .intro {
-        gap: 1rem;
+    .container>div.intro {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
     }
 
     .intro p {
-        text-align: center;
-    }
-
-    img.food-image {
-        width: min(100%, 450px);
+        text-align: left;
     }
 
     .recetas {
-        padding: 2rem 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "platos caracteristicas"
+            "titulo-recetas titulo-recetas"
+            "lista-recetas lista-recetas";
+        gap: 2rem;
+        padding: 3rem 1rem;
+    }
+
+    .recetas nav ul {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .content-grid {
-        padding-top: 2rem;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        grid-template-areas: "instructions ingredients";
+        gap: 2rem;
+        padding: 3rem 0 2rem;
     }
 
     .recipe-section {
-        flex-basis: auto;
-        padding: 1.25rem;
+        padding: 1.5rem;
     }
 }
