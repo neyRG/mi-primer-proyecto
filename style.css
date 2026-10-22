@@ -27,10 +27,6 @@ header {
 }
 
 .site-nav {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: 1rem;
     width: min(100%, 1040px);
     margin: 0 auto 2rem;
     padding: 1rem 0;
@@ -44,12 +40,13 @@ header {
     text-decoration: none;
 }
 
-.site-nav ul {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    align-items: center;
-    gap: .5rem 1.5rem;
-    list-style: none;
+.site-nav .navbar-brand {
+    margin-right: 1rem;
+}
+
+.site-nav .nav-link {
+    padding: .5rem .75rem;
+    color: #713d24;
 }
 
 .recetas nav ul {
@@ -59,10 +56,76 @@ header {
     list-style: none;
 }
 
-.site-nav a,
 .recetas nav a {
     color: #713d24;
     text-underline-offset: .2em;
+}
+
+.gallery-section {
+    grid-column: 1 / -1;
+    width: min(100%, 760px);
+    margin: 1rem auto;
+}
+
+.gallery-section h2 {
+    text-align: center;
+}
+
+.food-carousel {
+    overflow: hidden;
+    border: 8px solid #fffaf2;
+    box-shadow: 0 12px 25px rgba(74, 41, 27, .18);
+}
+
+.gallery-card {
+    display: block;
+    color: #fffaf2;
+    text-decoration: none;
+    transition: filter .2s ease, transform .2s ease;
+}
+
+.gallery-card:hover,
+.gallery-card:focus {
+    color: #fffaf2;
+    filter: brightness(.88);
+}
+
+.gallery-card:focus-visible {
+    outline: 3px solid #bb6b36;
+    outline-offset: -3px;
+}
+
+.gallery-card:active {
+    transform: scale(.99);
+}
+
+.food-carousel .carousel-item img {
+    height: clamp(220px, 45vw, 420px);
+    object-fit: cover;
+}
+
+.food-carousel .carousel-caption {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background: rgba(74, 41, 27, .72);
+}
+
+.food-carousel .carousel-caption h3 {
+    margin: 0;
+    color: #fffaf2;
+    font-size: 1.25rem;
+}
+
+.food-carousel .carousel-indicators [data-bs-target] {
+    width: 2rem;
+    height: .3rem;
+    background-color: #bb6b36;
+}
+
+.recipe-gallery {
+    padding: 0 1rem 2rem;
 }
 
 h1,
@@ -138,6 +201,7 @@ img.food-image {
     grid-template-areas:
         "platos"
         "caracteristicas"
+        "galeria"
         "titulo-recetas"
         "lista-recetas";
     align-items: stretch;
@@ -158,6 +222,10 @@ img.food-image {
 
 .recetas>.bloque:nth-of-type(2) {
     grid-area: caracteristicas;
+}
+
+.recetas>.gallery-section {
+    grid-area: galeria;
 }
 
 .recetas>#recetas {
@@ -244,13 +312,79 @@ img.food-image {
     color: #713d24;
 }
 
-.site-nav a:hover,
-.site-nav a:focus-visible,
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus,
+.site-nav .nav-link:active,
+.site-nav .navbar-brand:hover,
+.site-nav .navbar-brand:focus,
+.site-nav .navbar-brand:active,
 .recetas nav a:hover,
-.recetas nav a:focus-visible,
+.recetas nav a:focus,
+.recetas nav a:active,
 .back-nav a:hover,
-.back-nav a:focus-visible {
+.back-nav a:focus,
+.back-nav a:active {
     color: #8b4826;
+}
+
+.site-nav a,
+.recetas nav a,
+.back-nav a,
+button,
+.food-carousel button {
+    transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.site-nav .nav-link:hover,
+.recetas nav a:hover,
+.back-nav a:hover {
+    color: #8b4826;
+}
+
+.site-nav .nav-link:active,
+.recetas nav a:active,
+.back-nav a:active,
+.food-carousel button:active {
+    transform: scale(.97);
+}
+
+.food-carousel button:hover {
+    filter: brightness(.8);
+}
+
+.food-carousel button:focus {
+    outline: 2px solid #bb6b36;
+    outline-offset: -4px;
+}
+
+.site-nav .navbar-toggler {
+    border-color: #8b4826;
+}
+
+.site-nav .navbar-toggler:hover,
+.site-nav .navbar-toggler:active {
+    background-color: #ead8bc;
+}
+
+.site-nav .navbar-toggler:focus,
+.food-carousel button:focus {
+    box-shadow: 0 0 0 .2rem rgba(187, 107, 54, .35);
+}
+
+.recetas nav a {
+    display: block;
+    padding: .75rem 1rem;
+    background: #fffaf2;
+    border-left: 4px solid #bb6b36;
+    text-decoration: none;
+    transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.recetas nav a:hover,
+.recetas nav a:focus {
+    background: #ead8bc;
+    box-shadow: 0 5px 14px rgba(74, 41, 27, .12);
+    transform: translateY(-2px);
 }
 
 footer {
@@ -264,17 +398,17 @@ footer p {
     margin: .25rem 0;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
 @media (min-width: 1024px) {
-    .site-nav {
-        grid-template-columns: minmax(0, 1fr) auto;
-    }
-
-    .site-nav ul {
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: max-content;
-    }
-
     .container>div.intro {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem;
@@ -288,6 +422,7 @@ footer p {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-areas:
             "platos caracteristicas"
+            "galeria galeria"
             "titulo-recetas titulo-recetas"
             "lista-recetas lista-recetas";
         gap: 2rem;
