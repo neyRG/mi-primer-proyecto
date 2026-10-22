@@ -67,6 +67,10 @@ header {
     margin: 1rem auto;
 }
 
+.gallery-section.animate__animated {
+    --animate-duration: .5s;
+}
+
 .gallery-section h2 {
     text-align: center;
 }
@@ -138,6 +142,29 @@ h1 {
     margin: 0 0 1.5rem;
     font-size: clamp(2.2rem, 6vw, 4rem);
     line-height: 1.1;
+    animation: title-entrance .5s ease-out both;
+}
+
+@keyframes title-entrance {
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    55% {
+        opacity: .7;
+        transform: translateY(-.2rem);
+    }
+
+    80% {
+        opacity: .9;
+        transform: translateY(.08rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h2 {
@@ -280,6 +307,7 @@ img.food-image {
     background: #fffaf2;
     border-top: 4px solid #bb6b36;
     box-shadow: 0 8px 20px rgba(74, 41, 27, .08);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .instructions ol,
@@ -398,17 +426,44 @@ footer p {
     margin: .25rem 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .recipe-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(74, 41, 27, .14);
     }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
+    .site-brand {
+        font-size: 1rem;
+    }
+
+    .recetas {
+        gap: 1rem;
+        padding: 1.5rem .5rem;
+    }
+
+    .bloque,
+    .recipe-section {
+        padding: 1rem;
+    }
+
+    .content-grid {
+        gap: 1rem;
+        padding: 1.5rem .5rem;
+    }
+
+    .recipe-gallery {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+
+    footer {
+        font-size: .9rem;
+    }
+}
+
+@media (min-width: 768px) {
     .container>div.intro {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem;
@@ -442,5 +497,16 @@ footer p {
 
     .recipe-section {
         padding: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
 }
